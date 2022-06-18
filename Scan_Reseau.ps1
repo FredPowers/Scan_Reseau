@@ -1,4 +1,4 @@
-﻿  <#
+  <#
 .NOTES
 	NAME:	Scan_Reseau.ps1
     VERSION : 1.0  17/05/2022
@@ -1720,12 +1720,12 @@ if ($MasqueCIDR_VPN -eq 0)
     Write-Host ""
     Write-Host ""
 
-
-    Write-Host "------------------------------------------------------------------------"
-    Write-Host "------------------------------------------------------------------------"
-    Write-Host ""
-
     Calcul_Reseaux $AdresseIPHost $MasqueHost
+
+    Write-Host "-----------------------------------------------------------------------"
+    Write-Host "-----------------------------------------------------------------------"
+    Write-Host "-----------------------------------------------------------------------"
+    write-host ""
 
 
     if ($interface_VPN_Status -like "Up")
@@ -1749,10 +1749,6 @@ if ($MasqueCIDR_VPN -eq 0)
     Write-Host "DHCP                 : $DHCP_VPN"
 
     Write-Host ""
-    Write-Host ""
-
-
-    Write-Host "------------------------------------------------------------------------"
     write-host ""
 
     Calcul_Reseaux $AdresseIP_VPN $Masque_VPN
