@@ -748,7 +748,7 @@ write-host ""
     $InterfaceUp_VPN = Get-NetAdapter | where {$_.status -like "Up" -and $_.Name -notlike "VMware*" -and $_.Name -like "Connexion au réseau local*"} | select -ExpandProperty Name
     $Interface_VPN_Status = Get-NetAdapter | where {$_.status -like "Up" -and $_.Name -notlike "VMware*" -and $_.Name -like "Connexion au réseau local*"} | select -ExpandProperty Status
     $MasqueCIDR_VPN = get-netipaddress | where {$_.interfaceAlias -eq $InterfaceUp_VPN -and $_.AddressFamily -eq "IPv4"} | select -ExpandProperty PrefixLength
-    $Mac_VPN = Get-netadapter -Name $InterfaceUp_VPN | select -ExpandProperty MacAddress
+    $Mac_VPN = Get-NetAdapter -Name "$InterfaceUp_VPN" -ErrorAction SilentlyContinue | select -ExpandProperty MacAddress
     $DHCP_VPN = Get-NetIPInterface | where {$_.InterfaceAlias -eq $InterfaceUp_VPN -and $_.AddressFamily -eq "IPv4"} | select -ExpandProperty Dhcp
     $AdresseIP_VPN = Get-NetIPAddress | where {$_.interfaceAlias -eq $InterfaceUp_VPN -and $_.AddressFamily -eq "IPv4"} | select -ExpandProperty IPAddress
 
@@ -1355,7 +1355,7 @@ if ($AdresseIP -eq $AdresseFin) {break}
     $InterfaceUp_VPN = Get-NetAdapter | where {$_.status -like "Up" -and $_.Name -notlike "VMware*" -and $_.Name -like "Connexion au réseau local*"} | select -ExpandProperty Name
     $Interface_VPN_Status = Get-NetAdapter | where {$_.status -like "Up" -and $_.Name -notlike "VMware*" -and $_.Name -like "Connexion au réseau local*"} | select -ExpandProperty Status
     $MasqueCIDR_VPN = get-netipaddress | where {$_.interfaceAlias -eq $InterfaceUp_VPN -and $_.AddressFamily -eq "IPv4"} | select -ExpandProperty PrefixLength
-    $Mac_VPN = Get-netadapter -Name $InterfaceUp_VPN | select -ExpandProperty MacAddress
+    $Mac_VPN = Get-netadapter -Name "$InterfaceUp_VPN" -ErrorAction SilentlyContinue | select -ExpandProperty MacAddress
     $DHCP_VPN = Get-NetIPInterface | where {$_.InterfaceAlias -eq $InterfaceUp_VPN -and $_.AddressFamily -eq "IPv4"} | select -ExpandProperty Dhcp
     $AdresseIP_VPN = Get-NetIPAddress | where {$_.interfaceAlias -eq $InterfaceUp_VPN -and $_.AddressFamily -eq "IPv4"} | select -ExpandProperty IPAddress
 
