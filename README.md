@@ -1,5 +1,5 @@
 # Scan_Reseau
-Un simple scanner de réseaux
+A simple network scanner
 
 .NOTES
 	NAME:	Scan_Reseau.ps1
